@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: #FAF6ED; /* Warm soft cream background */
+    color: #1C1614; /* Deep warm charcoal text */
+    font-family: 'Outfit', 'Inter', sans-serif;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F4EAE3;
+}
+::-webkit-scrollbar-thumb {
+  background: #7E1F32; /* Rich Maroon */
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #5F1424; /* Deep Burgundy */
+}
+
+/* Custom Gradients & Utilities */
+.bg-maroon-gradient {
+  background: linear-gradient(135deg, #7E1F32 0%, #3A2016 50%, #28060D 100%);
+}
+
+.bg-maroon-radial {
+  background: radial-gradient(circle at top right, #9E3249 0%, #5F1424 50%, #28060D 100%);
+}
+
+.bg-warmbrown-gradient {
+  background: linear-gradient(135deg, #553123 0%, #28060D 100%);
+}
+
+.glass-nav {
+  background: rgba(253, 251, 247, 0.96); /* Off-white glass */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-dark {
+  background: rgba(40, 6, 13, 0.88); /* Burgundy glass */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(232, 212, 199, 0.6);
+}
+
+/* Glow effects */
+.glow-maroon {
+  box-shadow: 0 10px 30px -5px rgba(126, 31, 50, 0.4);
+}
+
+.glow-warmbrown {
+  box-shadow: 0 10px 25px -5px rgba(85, 49, 35, 0.35);
+}
+
+.glow-gold {
+  box-shadow: 0 10px 25px -5px rgba(212, 175, 55, 0.35);
+}
+
+/* Custom Modal Animation */
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-modal {
+  animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
