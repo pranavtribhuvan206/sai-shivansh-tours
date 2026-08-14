@@ -66,7 +66,7 @@ export default function Footer({ onOpenBooking }) {
             </div>
 
             <p className="text-xs sm:text-sm text-cream-200/90 leading-relaxed pr-4">
-              Your trusted car rental and travel service in Shirdi. Offering sanitized Swift Dzire, Ertiga, Innova, Innova Crysta, Tavera, Ciaz, and luxury 12–26 seater Tempo Travellers for pilgrimage, local, and outstation trips.
+              Your trusted car rental and travel service in Shirdi. Offering sanitized Maruti Suzuki Dzire Tour S, Maruti Suzuki Ertiga, Toyota Innova, Toyota Innova Crysta, Chevrolet Tavera, Maruti Suzuki Ciaz, and Force Travellers for pilgrimage, local, and outstation trips.
             </p>
 
             <div className="pt-2 flex items-center space-x-2.5 text-xs text-gold-400 font-semibold">

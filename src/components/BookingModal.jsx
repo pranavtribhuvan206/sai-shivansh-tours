@@ -13,7 +13,7 @@ export default function BookingModal({ isOpen, onClose, selectedVehicle, selecte
     travelDate: '',
     pickupTime: '',
     passengers: '4 Passengers',
-    vehicle: 'Swift Dzire',
+    vehicle: 'Maruti Suzuki Dzire Tour S',
     serviceType: 'Shirdi Pilgrimage Travel',
     message: ''
   });

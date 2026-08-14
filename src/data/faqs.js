@@ -2,7 +2,7 @@ export const FAQS = [
   {
     id: 1,
     question: "Which vehicles are available in your fleet?",
-    answer: "We offer an extensive, well-maintained fleet including Swift Dzire, Maruti Ertiga, Toyota Innova, Toyota Innova Crysta, Tevera, Suzuki Ciaz, Tempo Traveller (12–17 Seater), and Force Urbania / Large Tempo (17–26 Seater).",
+    answer: "We offer an extensive, well-maintained fleet including Maruti Suzuki Dzire Tour S, Maruti Suzuki Ertiga, Toyota Innova, Toyota Innova Crysta, Chevrolet Tavera, Maruti Suzuki Ciaz, and Force Traveller.",
     category: "Vehicles"
   },
   {
@@ -31,8 +31,8 @@ export const FAQS = [
   },
   {
     id: 6,
-    question: "Do you offer Tempo Traveller and luxury Force Urbania for large groups?",
-    answer: "Yes! We have 12–17 seater Force Tempo Travellers and 17–26 seater luxury Force Urbania equipped with push-back reclining seats, individual/roof AC vents, standing height clearance, and dedicated luggage carriers.",
+    question: "Do you offer Force Traveller for large groups?",
+    answer: "Yes! We have spacious Force Travellers equipped with push-back reclining seats, powerful roof AC vents, high roof clearance, and dedicated luggage racks for comfortable group and family tours.",
     category: "Vehicles"
   },
   {

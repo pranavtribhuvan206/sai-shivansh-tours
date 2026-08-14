@@ -1,22 +1,21 @@
-import dzireImg from '../assets/vehicles/swift-dzire.jpg';
+import dzireImg from '../assets/vehicles/dzire-tour-s.jpg';
 import ertigaImg from '../assets/vehicles/maruti-ertiga.jpg';
 import innovaImg from '../assets/vehicles/toyota-innova.jpg';
-import urbaniaImg from '../assets/vehicles/force-urbania.jpg';
-import tempoImg from '../assets/vehicles/tempo-traveller.jpg';
+import travellerImg from '../assets/vehicles/force-traveller.jpg';
 import crystaImg from '../assets/vehicles/innova-crysta.jpg';
-import teveraImg from '../assets/vehicles/tevera.jpg';
-import ciazImg from '../assets/vehicles/suzuki-ciaz.jpg';
+import taveraImg from '../assets/vehicles/chevrolet-tavera.jpg';
+import ciazImg from '../assets/vehicles/maruti-ciaz.jpg';
 
 export const VEHICLES = [
   {
-    id: "swift-dzire",
-    name: "Swift Dzire",
+    id: "dzire-tour-s",
+    name: "Maruti Suzuki Dzire Tour S",
     category: "Sedan",
     tagline: "Comfortable sedan for small families, couples, and quick local travel.",
     seating: "4+1 Passengers",
     luggage: "2-3 Bags",
     acType: "Air Conditioned",
-    fuelType: "Diesel / Petrol",
+    fuelType: "Diesel / Petrol / CNG",
     priceStarting: "₹11–₹12 / km",
     rateRange: "₹11–₹25 / km",
     monthlyRental: "₹35,000 / month",
@@ -31,7 +30,7 @@ export const VEHICLES = [
   },
   {
     id: "maruti-ertiga",
-    name: "Maruti Ertiga",
+    name: "Maruti Suzuki Ertiga",
     category: "MUV",
     tagline: "Comfortable family car suitable for family trips, temple darshan & outstation.",
     seating: "6+1 Passengers",
@@ -72,51 +71,9 @@ export const VEHICLES = [
     ]
   },
   {
-    id: "urbania-tempo",
-    name: "Force Urbania / Large Tempo",
-    category: "Luxury Mini Bus",
-    tagline: "Ultra-modern luxury group carrier for 17-26 passengers with premium amenities.",
-    seating: "17–26 Passengers",
-    luggage: "12+ Large Bags",
-    acType: "Individual Passenger AC Vents",
-    fuelType: "Diesel",
-    priceStarting: "₹24–₹25 / km",
-    rateRange: "₹11–₹25 / km",
-    monthlyRental: "Contact for Corporate Rates",
-    badge: "Luxury Group Travel",
-    image: urbaniaImg,
-    features: [
-      "Monocoque body structure for zero cabin noise",
-      "Individual USB charging slots per seat",
-      "Wide panorama windows for scenic tours",
-      "Reclining plush seats with armrests"
-    ]
-  },
-  {
-    id: "tempo-traveller-12",
-    name: "Tempo Traveller (12–17 Seater)",
-    category: "Group Mini Bus",
-    tagline: "Spacious vehicle ideal for group pilgrimages, wedding parties & outstation tours.",
-    seating: "12–17 Passengers",
-    luggage: "8+ Heavy Bags",
-    acType: "Powerful Roof AC",
-    fuelType: "Diesel",
-    priceStarting: "₹22–₹24 / km",
-    rateRange: "₹11–₹25 / km",
-    monthlyRental: "Contact for Tour Packages",
-    badge: "Top Choice for Group Pilgrims",
-    image: tempoImg,
-    features: [
-      "Push-back reclining seats",
-      "High roof with standing clearance",
-      "Dedicated luggage carrier rack",
-      "LED lighting & music system"
-    ]
-  },
-  {
     id: "innova-crysta",
     name: "Toyota Innova Crysta",
-    category: "Premium SUV",
+    category: "SUV",
     tagline: "Premium luxury SUV for VIP travel, corporate clients & long distance tours.",
     seating: "7+1 Passengers",
     luggage: "5+ Bags",
@@ -135,8 +92,8 @@ export const VEHICLES = [
     ]
   },
   {
-    id: "tevera",
-    name: "Tevera",
+    id: "chevrolet-tavera",
+    name: "Chevrolet Tavera",
     category: "MUV",
     tagline: "Rugged and spacious MUV ideal for family pilgrimages and economical group tours.",
     seating: "7–9 Passengers",
@@ -147,7 +104,7 @@ export const VEHICLES = [
     rateRange: "₹11–₹25 / km",
     monthlyRental: "₹35,000 / month",
     badge: "Economical Group MUV",
-    image: teveraImg,
+    image: taveraImg,
     features: [
       "Generous seating for up to 9 passengers",
       "Powerful dual cooling AC",
@@ -156,9 +113,9 @@ export const VEHICLES = [
     ]
   },
   {
-    id: "suzuki-ciaz",
-    name: "Suzuki Ciaz",
-    category: "Premium Sedan",
+    id: "maruti-ciaz",
+    name: "Maruti Suzuki Ciaz",
+    category: "Sedan",
     tagline: "Executive premium sedan with class-leading rear legroom and smooth highway ride.",
     seating: "4+1 Passengers",
     luggage: "3 Bags",
@@ -174,6 +131,27 @@ export const VEHICLES = [
       "Automatic climate control AC",
       "Plush fabric & quiet cabin",
       "Experienced polite driver"
+    ]
+  },
+  {
+    id: "force-traveller",
+    name: "Force Traveller",
+    category: "Tempo Traveller",
+    tagline: "Spacious vehicle ideal for group pilgrimages, wedding parties & outstation tours.",
+    seating: "12–17 / 20+ Passengers",
+    luggage: "10+ Heavy Bags",
+    acType: "Powerful Roof AC",
+    fuelType: "Diesel",
+    priceStarting: "₹22–₹24 / km",
+    rateRange: "₹11–₹25 / km",
+    monthlyRental: "Contact for Tour Packages",
+    badge: "Top Choice for Group Pilgrims",
+    image: travellerImg,
+    features: [
+      "Push-back reclining seats",
+      "High roof with standing clearance",
+      "Dedicated luggage carrier rack",
+      "LED lighting & music system"
     ]
   }
 ];

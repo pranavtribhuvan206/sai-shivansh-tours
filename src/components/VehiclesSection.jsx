@@ -21,7 +21,7 @@ export default function VehiclesSection({ onSelectVehicle }) {
         <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center space-x-2 bg-maroon-100 text-maroon-900 text-xs font-bold px-3.5 py-1.5 rounded-full mb-3 uppercase tracking-wider border border-maroon-200">
             <Car className="w-4 h-4 text-maroon-700" />
-            <span>Our 8 Verified Fleet Vehicles</span>
+            <span>Our Verified Fleet Vehicles</span>
           </div>
           
           <h2 className="text-3xl sm:text-4xl font-extrabold text-maroon-950 font-sans tracking-tight">

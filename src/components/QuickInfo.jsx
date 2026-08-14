@@ -15,7 +15,7 @@ export default function QuickInfo() {
     {
       id: 'vehicles',
       title: 'Fleet & Rates',
-      detail: '8 Fleet Vehicles',
+      detail: 'Verified Fleet Vehicles',
       subtext: 'Starting from ₹11–₹25 / km',
       icon: Car,
       color: 'bg-warmbrown-800 text-gold-400 border border-gold-500/20',
