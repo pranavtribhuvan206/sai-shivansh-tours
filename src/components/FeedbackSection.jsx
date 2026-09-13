@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Star, MessageSquareQuote, Send, CheckCircle2, AlertCircle, Sparkles, User, Mail, ThumbsUp } from 'lucide-react';
+import { Star, MessageSquareQuote, Send, CheckCircle2, AlertCircle, Sparkles, User, Mail, ThumbsUp, ShieldCheck } from 'lucide-react';
 import { getFeedbacks, submitFeedback } from '../services/feedbackService';
-import { VEHICLES } from '../data/vehicles';
-import { SERVICES } from '../data/services';
 
 export default function FeedbackSection() {
   const [feedbacks, setFeedbacks] = useState([]);
   const [loadingFeedbacks, setLoadingFeedbacks] = useState(true);
+  const [dbConfigured, setDbConfigured] = useState(true);
 
   // Form State
   const [name, setName] = useState('');
@@ -20,6 +19,7 @@ export default function FeedbackSection() {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedSuccess, setSubmittedSuccess] = useState(false);
+  const [successMsg, setSuccessMsg] = useState('');
   const [serverError, setServerError] = useState('');
 
   useEffect(() => {
@@ -29,8 +29,9 @@ export default function FeedbackSection() {
   const loadReviews = async () => {
     setLoadingFeedbacks(true);
     try {
-      const data = await getFeedbacks();
-      setFeedbacks(data);
+      const res = await getFeedbacks();
+      setFeedbacks(res.feedbacks || []);
+      setDbConfigured(res.configured !== false);
     } catch (err) {
       console.error('Failed to load feedback reviews:', err);
     } finally {
@@ -41,8 +42,8 @@ export default function FeedbackSection() {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!name.trim()) {
-      newErrors.name = 'Full name is required';
+    if (!name.trim() || name.trim().length < 2) {
+      newErrors.name = 'Full name is required (min 2 characters)';
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -56,8 +57,8 @@ export default function FeedbackSection() {
       newErrors.rating = 'Please select a star rating (1 to 5 stars)';
     }
 
-    if (!message.trim()) {
-      newErrors.message = 'Feedback message is required';
+    if (!message.trim() || message.trim().length < 5) {
+      newErrors.message = 'Feedback message is required (min 5 characters)';
     }
 
     setErrors(newErrors);
@@ -85,6 +86,8 @@ export default function FeedbackSection() {
 
       if (res.success) {
         setSubmittedSuccess(true);
+        setSuccessMsg(res.message || 'Thank you! Your feedback has been received and will be published once reviewed by our team.');
+        
         // Clear form fields
         setName('');
         setEmail('');
@@ -93,10 +96,10 @@ export default function FeedbackSection() {
         setMessage('');
         setErrors({});
 
-        // Reload reviews list to display new feedback
+        // Reload reviews list
         loadReviews();
       } else {
-        setServerError(res.error || 'Failed to submit feedback. Please try again.');
+        setServerError(res.error || 'Failed to submit feedback. Please check your inputs.');
       }
     } catch (err) {
       setServerError('An unexpected error occurred. Please try again.');
@@ -105,7 +108,6 @@ export default function FeedbackSection() {
     }
   };
 
-  // Pre-populated trip package options
   const packageOptions = [
     'Shirdi Temple Pilgrimage Darshan',
     'Shirdi Airport Transfer (SAG)',
@@ -119,7 +121,7 @@ export default function FeedbackSection() {
 
   return (
     <section id="feedback" className="py-16 sm:py-24 bg-cream-50 relative overflow-hidden">
-      {/* Background Decorative Accent */}
+      {/* Background Decorative Accents */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-maroon-100/40 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -141,7 +143,7 @@ export default function FeedbackSection() {
           </p>
         </div>
 
-        {/* 2-Column Grid: Left (Form) | Right (Reviews Display) */}
+        {/* 2-Column Grid: Form (Left) | Public Reviews (Right) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
           {/* Column 1: Feedback Form */}
@@ -152,7 +154,7 @@ export default function FeedbackSection() {
                   <span>Send Us Your Feedback</span>
                 </h3>
                 <p className="text-xs text-warmbrown-600 mt-0.5">
-                  We appreciate your valuable review!
+                  Submissions are reviewed before public display
                 </p>
               </div>
               <div className="w-10 h-10 rounded-2xl bg-maroon-50 text-maroon-700 flex items-center justify-center border border-maroon-100 shrink-0">
@@ -166,13 +168,17 @@ export default function FeedbackSection() {
                 <div className="w-14 h-14 bg-green-100 text-green-600 rounded-full mx-auto flex items-center justify-center shadow-sm">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <div className="space-y-1">
+                <div className="space-y-2">
                   <h4 className="text-xl font-bold text-green-900">
-                    Thank You for Your Feedback!
+                    Feedback Received!
                   </h4>
-                  <p className="text-xs sm:text-sm text-green-800 leading-relaxed">
-                    Your feedback has been successfully submitted and stored. We appreciate you taking the time to share your experience with Sai Shivansh Tours & Travels.
+                  <p className="text-xs sm:text-sm text-green-800 leading-relaxed font-medium">
+                    {successMsg}
                   </p>
+                  <div className="pt-2 flex items-center justify-center space-x-1.5 text-xs text-green-700 font-semibold">
+                    <ShieldCheck className="w-4 h-4 text-green-600" />
+                    <span>Your email address is stored securely and never published.</span>
+                  </div>
                 </div>
                 <button
                   type="button"
@@ -252,6 +258,7 @@ export default function FeedbackSection() {
                       id="fb-name"
                       type="text"
                       required
+                      maxLength={100}
                       placeholder="e.g. Rahul Sharma"
                       value={name}
                       onChange={(e) => {
@@ -275,12 +282,13 @@ export default function FeedbackSection() {
                   <div>
                     <label htmlFor="fb-email" className="block text-xs font-bold text-maroon-950 uppercase tracking-wider mb-1.5 flex items-center space-x-1">
                       <Mail className="w-3.5 h-3.5 text-maroon-700" />
-                      <span>Email Address *</span>
+                      <span>Email Address * (Private)</span>
                     </label>
                     <input
                       id="fb-email"
                       type="email"
                       required
+                      maxLength={150}
                       placeholder="e.g. rahul@example.com"
                       value={email}
                       onChange={(e) => {
@@ -313,7 +321,7 @@ export default function FeedbackSection() {
                     onChange={(e) => setTripName(e.target.value)}
                     className="w-full px-4 py-2.5 rounded-xl border border-cream-300 focus:ring-2 focus:ring-maroon-700 text-sm outline-none bg-white text-charcoal-900 transition-all font-medium"
                   >
-                    <option value="">-- Select or type below --</option>
+                    <option value="">-- Select or leave blank --</option>
                     {packageOptions.map((opt) => (
                       <option key={opt} value={opt}>
                         {opt}
@@ -331,6 +339,7 @@ export default function FeedbackSection() {
                     id="fb-message"
                     rows="3"
                     required
+                    maxLength={1000}
                     placeholder="Tell us about your driver, vehicle comfort, punctuality, or tour experience..."
                     value={message}
                     onChange={(e) => {
@@ -376,7 +385,7 @@ export default function FeedbackSection() {
             )}
           </div>
 
-          {/* Column 2: What Our Travelers Say (Reviews Display) */}
+          {/* Column 2: What Our Travelers Say (Public Approved Reviews) */}
           <div className="lg:col-span-6 space-y-4">
             
             <div className="flex items-center justify-between px-1">
@@ -384,7 +393,7 @@ export default function FeedbackSection() {
                 What Our Travelers Say
               </h3>
               <span className="text-xs font-semibold text-warmbrown-600">
-                {feedbacks.length} {feedbacks.length === 1 ? 'Review' : 'Reviews'}
+                {feedbacks.length} {feedbacks.length === 1 ? 'Approved Review' : 'Approved Reviews'}
               </span>
             </div>
 
@@ -415,7 +424,7 @@ export default function FeedbackSection() {
                 </div>
               </div>
             ) : (
-              /* Review Cards List */
+              /* Approved Review Cards List */
               <div className="space-y-4 max-h-[550px] overflow-y-auto pr-1 custom-scrollbar">
                 {feedbacks.map((item) => (
                   <div
@@ -456,9 +465,12 @@ export default function FeedbackSection() {
                       "{item.message}"
                     </p>
 
-                    {/* Date Footer */}
+                    {/* Footer - No Email Displayed */}
                     <div className="mt-3 text-[11px] text-warmbrown-500 font-medium flex items-center justify-between pt-2 border-t border-cream-100">
-                      <span>Verified Guest Review</span>
+                      <span className="flex items-center space-x-1 text-green-700">
+                        <ShieldCheck className="w-3.5 h-3.5 text-green-600" />
+                        <span>Verified Customer Review</span>
+                      </span>
                       <span>
                         {item.createdAt
                           ? new Date(item.createdAt).toLocaleDateString('en-IN', {
@@ -466,7 +478,7 @@ export default function FeedbackSection() {
                               month: 'short',
                               year: 'numeric',
                             })
-                          : 'Recently Submitted'}
+                          : 'Recent'}
                       </span>
                     </div>
 
