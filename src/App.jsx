@@ -5,6 +5,7 @@ import QuickInfo from './components/QuickInfo';
 import VehiclesSection from './components/VehiclesSection';
 import ServicesSection from './components/ServicesSection';
 import AboutSection from './components/AboutSection';
+import FeedbackSection from './components/FeedbackSection';
 import FAQSection from './components/FAQSection';
 import WhatsAppCTA from './components/WhatsAppCTA';
 import ContactSection from './components/ContactSection';
@@ -62,6 +63,9 @@ export default function App() {
 
         {/* About & Trust Highlights with Temple Photo */}
         <AboutSection />
+
+        {/* Traveler Reviews & Feedback Section */}
+        <FeedbackSection />
 
         {/* FAQ Accordion Section */}
         <FAQSection />

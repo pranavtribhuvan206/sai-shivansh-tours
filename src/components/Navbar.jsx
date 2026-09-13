@@ -31,6 +31,7 @@ export default function Navbar({ onOpenBooking, onOpenEnquiry }) {
     { name: 'Vehicles', href: '#vehicles' },
     { name: 'Services', href: '#services' },
     { name: 'About Us', href: '#about' },
+    { name: 'Feedback', href: '#feedback' },
     { name: 'FAQ', href: '#faq' },
     { name: 'Location', href: '#location' },
     { name: 'Contact', href: '#contact' },

@@ -9,6 +9,7 @@ export default function Footer({ onOpenBooking }) {
     { name: 'Vehicles', href: '#vehicles' },
     { name: 'Services', href: '#services' },
     { name: 'About Us', href: '#about' },
+    { name: 'Feedback & Reviews', href: '#feedback' },
     { name: 'FAQ', href: '#faq' },
     { name: 'Location', href: '#location' },
     { name: 'Contact', href: '#contact' },
